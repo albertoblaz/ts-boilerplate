@@ -1,0 +1,10 @@
+node_modules/
+dist/*
+build/
+coverage/
+
+# asdf/mise tooling version file. Node version is set in package.json
+.tool-versions
+
+# TailwindCSS build file
+app/styles/tailwind/index.css
