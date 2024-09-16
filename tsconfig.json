@@ -53,6 +53,7 @@
   ],
   "include": [
     "app",
+    "reset.d.ts",
     "tailwind.config.ts"
   ]
 }
