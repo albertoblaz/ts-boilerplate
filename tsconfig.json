@@ -26,6 +26,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "strictFunctionTypes": false,
+    "noUncheckedSideEffectImports": true,
     /* Not transpiling with Typescript (using Vite) */
     "module": "preserve",
     "noEmit": true,
