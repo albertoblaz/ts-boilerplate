@@ -50,9 +50,14 @@ export default tseslint.config(
     }
   },
   {
-    // Parse only JS files without type-checking at the project root folder
-    files: ['*.js'],
+    // Parse only JS files without type-checking at the project root or in scripts folder
+    files: ['*.js', 'scripts/**/*.js'],
     extends: [tseslint.configs.disableTypeChecked],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      }
+    }
   },
   {
     files: ['**/*.{ts,tsx,mtsx}'],
