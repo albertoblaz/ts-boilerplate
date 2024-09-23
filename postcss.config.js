@@ -1,7 +1,9 @@
 import postCssImport from 'postcss-import';
 import tailwindCss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
+import postcssPresetEnv from 'postcss-preset-env';
 
 export default {
-  plugins: [postCssImport, tailwindCss, autoprefixer],
+  plugins: [postCssImport, tailwindCss, postcssPresetEnv({
+    features: {},
+  })],
 };
