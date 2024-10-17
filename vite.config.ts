@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import browserslistToEsbuild from 'browserslist-to-esbuild';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   test: {
@@ -13,15 +14,14 @@ export default defineConfig({
   base: '',
   resolve: {
     alias: {
-      app: path.resolve(__dirname, 'app/'),
-      '@assets': path.resolve(__dirname, 'assets/'),
+      '@assets': path.resolve(__dirname, 'assets/'), // DO NOT remove this line or assets won't be included in the build
     },
   },
   build: {
-    target: browserslistToEsbuild('0.2% and last 2.5 years'), // Baseline Widely Adopted
+    target: browserslistToEsbuild(),
     rollupOptions: {
       logLevel: 'info',
     },
   },
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
 });

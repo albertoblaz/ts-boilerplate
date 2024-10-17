@@ -1,0 +1,10 @@
+import { Icon } from "@app/components/icon/icon";
+
+export function App() {
+  return (
+    <div>
+      <h1>Hello, World!</h1>
+      <Icon name="hola"></Icon>
+    </div>
+  );
+}

@@ -3,8 +3,11 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "app/*": [
+      "@app/*": [
         "app/*"
+      ],
+      "@assets/*": [
+        "assets/*"
       ],
     },
     "types": [
@@ -52,8 +55,8 @@
     "**/types",
   ],
   "include": [
-    "app",
-    "reset.d.ts",
+    "app/**/*",
+    "typings/*",
     "tailwind.config.ts"
   ]
 }
