@@ -29,7 +29,7 @@ export default tseslint.config(
       'tsconfig.json',
       'eslint.config.mjs',
       'vite.config.ts',
-      'vitest-setup.ts'
+      'vitest.setup.ts'
     ]
   },
   eslint.configs.recommended,
