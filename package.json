@@ -1,7 +1,7 @@
 {
-  "name": "dotfiles",
+  "name": "ts-boilerplate",
   "version": "1.0.0",
-  "description": "My package.json template for Frontend projects",
+  "description": "Pre-configured repo for Frontend development with my favorite tooling",
   "author": {
     "name": "Alberto Blazquez",
     "url": "https://github.com/albertoblaz"
