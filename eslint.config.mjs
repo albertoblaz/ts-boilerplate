@@ -95,12 +95,6 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
-      'no-empty': 'off',
-
-      '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/explicit-member-accessibility': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
-
       '@typescript-eslint/no-unused-expressions': [
         'warn',
         {
@@ -118,10 +112,6 @@ export default tseslint.config(
           caughtErrors: 'none',
         },
       ],
-
-      '@typescript-eslint/no-var-requires': 'off',
-      '@typescript-eslint/prefer-namespace-keyword': 'off',
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
 
       // Check for missing dependencies in additional hooks other than `useEffect`
       'react-hooks/exhaustive-deps': [
