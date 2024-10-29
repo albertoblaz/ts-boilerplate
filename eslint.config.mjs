@@ -9,6 +9,7 @@ import react from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tailwind from 'eslint-plugin-tailwindcss';
 import compat from 'eslint-plugin-compat';
+import importPlugin from 'eslint-plugin-import';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,17 +30,28 @@ export default tseslint.config(
   ...tseslint.configs.stylisticTypeChecked,
   ...tailwind.configs['flat/recommended'],
   compat.configs["flat/recommended"],
+  importPlugin.flatConfigs.recommended,
   {
-    plugins: {
-      '@typescript-eslint': tseslint.plugin,
-    },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
+        project: './tsconfig.json', // needed by importPlugin
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
+        ecmaVersion: 'latest', // needed by importPlugin
+        sourceType: 'module', // needed by importPlugin
       },
-    }
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json', // needed by importPlugin
+        },
+      },
+    },
   },
   {
     // Parse only JS files without type-checking at the project root or in scripts folder
@@ -106,9 +118,9 @@ export default tseslint.config(
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/prefer-namespace-keyword': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      // 'import/no-duplicates': 'error', // coming from "eslint-plugin-import" which does not support yet ESLint v9
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
+
       'react-hooks/exhaustive-deps': [
         'warn',
         {
