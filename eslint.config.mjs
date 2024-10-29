@@ -25,7 +25,6 @@ export default tseslint.config(
     ignores: ['**/dist/', '**/node_modules/', 'eslint.config.mjs'],
   },
   eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   ...tailwind.configs['flat/recommended'],
