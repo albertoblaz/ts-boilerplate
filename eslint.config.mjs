@@ -8,11 +8,12 @@ import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tailwind from 'eslint-plugin-tailwindcss';
+import compat from 'eslint-plugin-compat';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const compat = new FlatCompat({
+const flatCompat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: eslint.configs.recommended,
   allConfig: eslint.configs.all,
@@ -37,6 +38,7 @@ export default tseslint.config(
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   ...tailwind.configs['flat/recommended'],
+  compat.configs["flat/recommended"],
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
@@ -79,7 +81,7 @@ export default tseslint.config(
    * so we need to patch the config using @eslint/compat and @eslint/eslintrc as below
    */
   ...fixupConfigRules(
-    compat.extends(
+    flatCompat.extends(
       'plugin:react-hooks/recommended',
     )
   ),
