@@ -17,7 +17,13 @@ Pre-configured repo for Frontend development with my favorite tooling.
 - `vite`, configured with tsconfig-paths and browserslist config
 - `vitest` for testing, including `@testing-library/react` and other packages
 - `prettier` with Tailwind plugin
-- `eslint` with TS typed-recommended configs including React, ReactRefresh, Tailwind plugins
+- `eslint` with **strict TS typed-recommended configs**, including these plugins:
+  - `eslint-plugin-react`
+  - `eslint-plugin-react-hooks`
+  - `eslint-plugin-react-refresh`
+  - `eslint-plugin-tailwindcss`
+  - `eslint-plugin-compat`
+  - `eslint-plugin-import`
 - Github Action to deploy on Fly.io
 
 ## SVG Icon Sprite
