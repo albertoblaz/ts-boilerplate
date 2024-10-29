@@ -57,6 +57,8 @@
   "include": [
     "app/**/*",
     "typings/*",
-    "tailwind.config.ts"
+    "tailwind.config.ts",
+    "vite.config.ts",
+    "vitest.setup.ts",
   ]
 }

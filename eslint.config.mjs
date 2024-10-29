@@ -21,17 +21,7 @@ const flatCompat = new FlatCompat({
 
 export default tseslint.config(
   {
-    ignores: [
-      '**/dist/',
-      '**/node_modules/',
-      '**/*.test.ts',
-      '**/*.test.tsx',
-      '**/typings/',
-      'tsconfig.json',
-      'eslint.config.mjs',
-      'vite.config.ts',
-      'vitest.setup.ts'
-    ]
+    ignores: ['**/dist/', '**/node_modules/', 'eslint.config.mjs'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
