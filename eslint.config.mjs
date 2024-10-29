@@ -69,9 +69,8 @@ export default tseslint.config(
   },
   {
     files: ['**/*.{ts,tsx,mtsx}'],
-    plugins: {
-      react,
-    },
+    ...react.configs.flat.recommended,
+    ...react.configs.flat['jsx-runtime'], // Add this if you are using React 17+
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
       globals: {
@@ -123,8 +122,6 @@ export default tseslint.config(
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/prefer-namespace-keyword': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      'react/jsx-uses-react': 'off',
-      'react/react-in-jsx-scope': 'off',
 
       // Check for missing dependencies in additional hooks other than `useEffect`
       'react-hooks/exhaustive-deps': [
