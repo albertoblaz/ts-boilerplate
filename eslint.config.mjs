@@ -1,10 +1,15 @@
+// Native Node modules
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// ESLint dependencies
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
+// TSLint
 import tseslint from 'typescript-eslint';
+// Globals for different environments
 import globals from 'globals';
+// Plugins
 import react from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tailwind from 'eslint-plugin-tailwindcss';
@@ -34,11 +39,11 @@ export default tseslint.config(
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: './tsconfig.json', // needed by importPlugin
+        project: './tsconfig.json', // needed by eslint-plugin-import to process tsconfig custom paths
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
-        ecmaVersion: 'latest', // needed by importPlugin
-        sourceType: 'module', // needed by importPlugin
+        ecmaVersion: 'latest', // needed by eslint-plugin-import to process tsconfig custom paths
+        sourceType: 'module', // needed by eslint-plugin-import to process tsconfig custom paths
       },
     },
     plugins: {
@@ -47,7 +52,7 @@ export default tseslint.config(
     settings: {
       'import/resolver': {
         typescript: {
-          project: './tsconfig.json', // needed by importPlugin
+          project: './tsconfig.json', // needed by eslint-plugin-import to process tsconfig custom paths
         },
       },
     },
@@ -70,10 +75,10 @@ export default tseslint.config(
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
       globals: {
-        ...globals.browser,
-        ...globals.jest,
-        ...globals.mocha,
-        ...globals.serviceworker,
+        ...globals.browser, // globals required by eslint-plugin-react
+        ...globals.jest, // globals required by vitest
+        ...globals.mocha, // globals required by vitest
+        ...globals.serviceworker, // globals required by eslint-plugin-react
       },
     },
   },
@@ -104,7 +109,8 @@ export default tseslint.config(
           allowTernary: true,
         },
       ],
-
+      // Allow unused variables that start with an underscore
+      // This is handy for unused parameters you can't omit from functions
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
@@ -120,6 +126,7 @@ export default tseslint.config(
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
 
+      // Check for missing dependencies in additional hooks other than `useEffect`
       'react-hooks/exhaustive-deps': [
         'warn',
         {
@@ -127,8 +134,11 @@ export default tseslint.config(
         },
       ],
 
+      // Don't warn when a constant (string, number, boolean, templateLiteral) is exported aside one or more components.
+      // https://github.com/ArnaudBarre/eslint-plugin-react-refresh?tab=readme-ov-file#allowconstantexport-v040
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 
+      // Admit custom classnames other than what TailwindCSS provides
       'tailwindcss/no-custom-classname': 'off',
     },
   },
