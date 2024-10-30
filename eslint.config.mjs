@@ -13,6 +13,7 @@ import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tailwind from 'eslint-plugin-tailwindcss';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import compat from 'eslint-plugin-compat';
 import importPlugin from 'eslint-plugin-import';
 
@@ -71,6 +72,7 @@ export default tseslint.config(
     files: ['**/*.{ts,tsx,mtsx}'],
     ...react.configs.flat.recommended,
     ...react.configs.flat['jsx-runtime'], // Add this if you are using React 17+
+    ...jsxA11y.flatConfigs.recommended,
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
       globals: {

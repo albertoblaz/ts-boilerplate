@@ -22,6 +22,7 @@ Pre-configured repo for Frontend development with my favorite tooling.
   - `eslint-plugin-react-hooks`
   - `eslint-plugin-react-refresh`
   - `eslint-plugin-tailwindcss`
+  - `eslint-plugin-jsx-a11y`
   - `eslint-plugin-compat`
   - `eslint-plugin-import`
 - Github Action to deploy on Fly.io
